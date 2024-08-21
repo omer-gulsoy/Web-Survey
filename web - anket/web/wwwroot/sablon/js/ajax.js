@@ -1,4 +1,4 @@
-//Dosya Yükleme
+ï»¿//Dosya YÃ¼kleme
 {
     function uploadFile() {
         var formData = new FormData();
@@ -7,14 +7,14 @@
         var responseMessage = document.getElementById("responseMessage");
 
         if (!fileName) {
-            document.getElementById("FileNameValidation").innerText = "Dosya adý gerekli.";
+            document.getElementById("FileNameValidation").innerText = "Dosya adÄ± gerekli.";
             return;
         } else {
             document.getElementById("FileNameValidation").innerText = "";
         }
 
         if (fileInput.files.length === 0) {
-            document.getElementById("FileValidation").innerText = "Lütfen bir dosya seçin.";
+            document.getElementById("FileValidation").innerText = "LÃ¼tfen bir dosya seÃ§in.";
             return;
         } else {
             document.getElementById("FileValidation").innerText = "";
@@ -33,12 +33,12 @@
                 responseMessage.innerHTML = '<div class="alert alert-success">' + response.message + '</div>';
             },
             error: function (xhr, status, error) {
-                responseMessage.innerHTML = '<div class="alert alert-danger">Dosya yükleme baþarýsýz.</div>';
+                responseMessage.innerHTML = '<div class="alert alert-danger">Dosya yÃ¼kleme baÅŸarÄ±sÄ±z.</div>';
             }
         });
     }
 }
-//Cevaplar ve Ýstatistikler
+//Cevaplar ve Ä°statistikler
 {
     $("#btnar").click(function () {
         $.ajax({
@@ -67,20 +67,20 @@
     function showSuccessToast(message) {
         Toastify({
             text: message,
-            duration: 3000, // Toast mesajýnýn görünme süresi
-            gravity: "top", // Toast mesajýnýn konumu (top veya bottom)
-            position: 'center', // Toast mesajýnýn konumu (left, center, right)
-            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)", // Baþarýlý iþlemler için arka plan rengi
+            duration: 3000, // Toast mesajÄ±nÄ±n gÃ¶rÃ¼nme sÃ¼resi
+            gravity: "top", // Toast mesajÄ±nÄ±n konumu (top veya bottom)
+            position: 'center', // Toast mesajÄ±nÄ±n konumu (left, center, right)
+            backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)", // BaÅŸarÄ±lÄ± iÅŸlemler iÃ§in arka plan rengi
         }).showToast();
     }
 
     function showErrorToast(message) {
         Toastify({
             text: message,
-            duration: 3000, // Toast mesajýnýn görünme süresi
-            gravity: "top", // Toast mesajýnýn konumu (top veya bottom)
-            position: 'center', // Toast mesajýnýn konumu (left, center, right)
-            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)", // Hata durumlarý için arka plan rengi
+            duration: 3000, // Toast mesajÄ±nÄ±n gÃ¶rÃ¼nme sÃ¼resi
+            gravity: "top", // Toast mesajÄ±nÄ±n konumu (top veya bottom)
+            position: 'center', // Toast mesajÄ±nÄ±n konumu (left, center, right)
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)", // Hata durumlarÄ± iÃ§in arka plan rengi
         }).showToast();
     }
 }
@@ -94,7 +94,7 @@
     });
 }
 
-//SEÇENEK
+//SEÃ‡ENEK
 {
 
 
@@ -117,10 +117,10 @@
                 let Option = result.Option;
                 let Status = result.Status;
 
-                showSuccessToast("SEÇENEK BAÞARIYLA EKLENDÝ !\n\n" + ocvalues.Name);
+                showSuccessToast("SEÃ‡ENEK BAÅžARIYLA EKLENDÄ° !\n\n" + ocvalues.Name);
 
                 // Determine status text and class
-                let statusText = Status ? "AKTÝF" : "PASÝF";
+                let statusText = Status ? "AKTÄ°F" : "PASÄ°F";
                 let statusClass = Status ? "text-success" : "text-danger";
 
                 // Append new survey to the table
@@ -131,10 +131,10 @@
                     <td>${Option}</td>
                     <td class="centered ${statusClass}"><b>${statusText}</b></td>
                     <td class="centered">
-                        <a class="btn btn-warning update-option" data-option-id=${SurveyOption_Id} data-bs-toggle="modal" data-bs-target="#updateOption" role="button"><b>DÜZENLE</b></a>
+                        <a class="btn btn-warning update-option" data-option-id=${SurveyOption_Id} data-bs-toggle="modal" data-bs-target="#updateOption" role="button"><b>DÃœZENLE</b></a>
                     </td>
                     <td class="centered">
-                        <a class="btn btn-danger delete-option" data-option-id=${SurveyOption_Id} role="button"><b>SÝL</b></a>
+                        <a class="btn btn-danger delete-option" data-option-id=${SurveyOption_Id} role="button"><b>SÄ°L</b></a>
                     </td>
                 </tr>`;
 
@@ -168,17 +168,17 @@
 						<thead class="thead-dark">
 							<tr class="centered">
 								<th>ID</th>
-								<th>BULUNDUÐU SORU</th>
-								<th>SEÇENEK</th>
-								<th>STATÜ</th>
+								<th>BULUNDUÄžU SORU</th>
+								<th>SEÃ‡ENEK</th>
+								<th>STATÃœ</th>
 								<th colspan="2">
-									<a data-bs-toggle="modal" data-bs-target="#createOption" class="btn btn-success create-option" role="button"><b>YENÝ OLUÞTUR</b></a>
+									<a data-bs-toggle="modal" data-bs-target="#createOption" class="btn btn-success create-option" role="button"><b>YENÄ° OLUÅžTUR</b></a>
 								</th>
 							</tr>
 						</thead>
 						<tbody>`;
                 $.each(data, function (index, value) {
-                    let statusText = value.status ? "AKTÝF" : "PASÝF";
+                    let statusText = value.status ? "AKTÄ°F" : "PASÄ°F";
                     let statusClass = value.status ? "text-success" : "text-danger";
                     console.log(value);
                     tablehtml += `
@@ -188,10 +188,10 @@
 							<td>${value.option}</td>
 							<td class="centered ${statusClass}"><b>${statusText}</b></td>
 							<td class="centered">
-								<a class="btn btn-warning update-option" data-option-id=${value.surveyOption_Id} data-bs-toggle="modal" data-bs-target="#updateOption" role="button"><b>DÜZENLE</b></a>
+								<a class="btn btn-warning update-option" data-option-id=${value.surveyOption_Id} data-bs-toggle="modal" data-bs-target="#updateOption" role="button"><b>DÃœZENLE</b></a>
 							</td>
 							<td class="centered">
-								<a class="btn btn-danger delete-option" data-option-id=${value.surveyOption_Id} role="button"><b>SÝL</b></a>
+								<a class="btn btn-danger delete-option" data-option-id=${value.surveyOption_Id} role="button"><b>SÄ°L</b></a>
 							</td>
 						</tr>`;
                 });
@@ -243,10 +243,10 @@
                     url: "/Admin/OptionAjax/UpdateOption/",
                     data: valuesforu,
                     success: function () {
-                        showSuccessToast("Seçenek Baþarýyla Güncellendi");
+                        showSuccessToast("SeÃ§enek BaÅŸarÄ±yla GÃ¼ncellendi");
 
                         // Update the table row with the new values
-                        let statusText = valuesforu.Status ? "AKTÝF" : "PASÝF";
+                        let statusText = valuesforu.Status ? "AKTÄ°F" : "PASÄ°F";
                         let statusClass = valuesforu.Status ? "text-success" : "text-danger";
 
                         row.find('td:eq(1)').text(valuesforu.SurveyQuestion_Id); // Update Name
@@ -274,14 +274,14 @@
                 contentType: "application/json",
                 dataType: "json",
                 success: function (response) {
-                    showSuccessToast("Seçenek Baþarýyla Silindi");
+                    showSuccessToast("SeÃ§enek BaÅŸarÄ±yla Silindi");
 
                     // Remove the row from the table
                     row.remove();
                 },
                 error: function (xhr, status, error) {
                     console.log(error);
-                    showErrorToast("Seçenek silinirken bir hata oluþtu.");
+                    showErrorToast("SeÃ§enek silinirken bir hata oluÅŸtu.");
                 }
             });
         });
@@ -301,7 +301,7 @@
         // Survey_Id parametresini oku
         const surveyId = urlParams.get('Survey_Id');
 
-        // Survey_Id'yi int türüne dönüþtür
+        // Survey_Id'yi int tÃ¼rÃ¼ne dÃ¶nÃ¼ÅŸtÃ¼r
         return surveyId ? parseInt(surveyId, 10) : null;
     }
 
@@ -332,12 +332,12 @@
                 let result = jQuery.parseJSON(funcqc);
                 let SurveyQuestion_Id = result.SurveyQuestion_Id;
                 if (qcvalues.Style == 2 || qcvalues.Style == 4 || qcvalues.Style == 5) {
-                    showSuccessToast("Soru Baþariyla Eklendi\n" + qcvalues.Description + " sorusu icin secenek eklemeye yönelndiriliyorsunuz.");
+                    showSuccessToast("Soru BaÅŸariyla Eklendi\n" + qcvalues.Description + " sorusu icin secenek eklemeye yÃ¶nelndiriliyorsunuz.");
                     setTimeout(function () {
                         window.location.href = '/Admin/OptionAjaxWithId/?SurveyQuestion_Id=' + SurveyQuestion_Id;
                     }, 5000);
                 } else {
-                    showSuccessToast("Soru Baþariyla Eklendi");
+                    showSuccessToast("Soru BaÅŸariyla Eklendi");
                 }
             }
         });
@@ -354,39 +354,39 @@
             dataType: "json",
             type: "GET",
             url: "/Admin/QuestionAjax/ReadQuestion/",
-            data: { Survey_Id: surveyId }, // Survey_Id parametresini gönder
+            data: { Survey_Id: surveyId }, // Survey_Id parametresini gÃ¶nder
             success: function (data) {
                 let tablehtml = `
                 <table class='table table-striped table-hover table-bordered'>
                     <thead class="thead-dark">
                         <tr class="centered">
                             <th>ID</th>
-                            <th>BULUNDUÐU ANKET</th>
+                            <th>BULUNDUÄžU ANKET</th>
                             <th>SIRA NO</th>
-                            <th>AÇIKLAMA</th>
-                            <th>STATÜ</th>
-                            <th>STÝL</th>
+                            <th>AÃ‡IKLAMA</th>
+                            <th>STATÃœ</th>
+                            <th>STÄ°L</th>
                             <th colspan="2">
-                                <a data-bs-toggle="modal" data-bs-target="#createQuestion" class="btn btn-success create-question" role="button"><b>YENÝ OLUÞTUR</b></a>
+                                <a data-bs-toggle="modal" data-bs-target="#createQuestion" class="btn btn-success create-question" role="button"><b>YENÄ° OLUÅžTUR</b></a>
                             </th>
                         </tr>
                     </thead>
                     <tbody>`;
                 $.each(data, function (index, value) {
-                    let statusText = value.status ? "AKTÝF" : "PASÝF";
-                    let statusClass = value.status ? "text-success" : "text-danger"; // Duruma göre renk sinifi
+                    let statusText = value.status ? "AKTÄ°F" : "PASÄ°F";
+                    let statusClass = value.status ? "text-success" : "text-danger"; // Duruma gÃ¶re renk sinifi
                     let styleText;
                     let styleButton = ""; // Initialize empty string for button
 
                     switch (value.style) {
                         case 0:
-                            styleText = "Kýsa Yanýt";
+                            styleText = "KÄ±sa YanÄ±t";
                             break;
                         case 1:
                             styleText = "Paragraf";
                             break;
                         case 2:
-                            styleText = "Çoktan Seçmeli";
+                            styleText = "Ã‡oktan SeÃ§meli";
                             styleButton = `<a href="/Admin/OptionAjax/?SurveyQuestion_Id=${value.surveyQuestion_Id}" class="btn btn-primary"
                                        data-bs-toggle="tooltip"
                                        data-bs-placement="top"
@@ -395,7 +395,7 @@
                                     </a>`;
                             break;
                         case 3:
-                            styleText = "Dosya Yükleme";
+                            styleText = "Dosya YÃ¼kleme";
                             break;
                         case 4:
                             styleText = "Onay Kutusu";
@@ -407,11 +407,11 @@
                                     </a>`;
                             break;
                         case 5:
-                            styleText = "Açýlýr Menü";
+                            styleText = "AÃ§Ä±lÄ±r MenÃ¼";
                             styleButton = `<a href="/Admin/OptionAjax/?SurveyQuestion_Id=${value.surveyQuestion_Id}" class="btn btn-primary"
                                        data-bs-toggle="tooltip"
                                        data-bs-placement="top"
-                                       title="Anketin Sorularýný Düzenlemek Ýçin Týkla">
+                                       title="Anketin SorularÄ±nÄ± DÃ¼zenlemek Ä°Ã§in TÄ±kla">
                                        <b>${styleText}</b>
                                     </a>`;
                             break;
@@ -438,10 +438,10 @@
                         ${styleButton ? styleButton : `<b>${styleText}</b>`}
                     </td>
                     <td class="centered">
-                        <a class="btn btn-warning update-question" data-question-id="${value.surveyQuestion_Id}" data-bs-toggle="modal" data-bs-target="#updateQuestion" role="button"><b>DÜZENLE</b></a>
+                        <a class="btn btn-warning update-question" data-question-id="${value.surveyQuestion_Id}" data-bs-toggle="modal" data-bs-target="#updateQuestion" role="button"><b>DÃœZENLE</b></a>
                     </td>
                     <td class="centered">
-                        <a class="btn btn-danger delete-question" data-question-id="${value.surveyQuestion_Id}" role="button"><b>SÝL</b></a>
+                        <a class="btn btn-danger delete-question" data-question-id="${value.surveyQuestion_Id}" role="button"><b>SÄ°L</b></a>
                     </td>
                 </tr>`;
                 });
@@ -500,7 +500,7 @@
                         showSuccessToast("Soru Basariyla Guncellendi");
 
                         // Update the table row with the new values
-                        let statusText = valuesforu.Status ? "AKTÝF" : "PASÝF";
+                        let statusText = valuesforu.Status ? "AKTÄ°F" : "PASÄ°F";
                         let statusClass = valuesforu.Status ? "text-success" : "text-danger";
 
                         row.find('td:eq(1)').text(valuesforu.Survey_Id);
@@ -527,13 +527,13 @@
                 contentType: "application/json",
                 dataType: "Json",
                 success: function () {
-                    showSuccessToast("Soru Baþariyla Silindi");
+                    showSuccessToast("Soru BaÅŸariyla Silindi");
                     // Remove the row from the table
                     row.remove();
                 },
                 error: function (xhr, status, error) {
                     console.log(error);
-                    showErrorToast("Soru silinirken bir hata oluþtu.");
+                    showErrorToast("Soru silinirken bir hata oluÅŸtu.");
                 }
             });
         });
@@ -564,10 +564,10 @@
                 let Description = result.Description;
                 let Status = result.Status;
 
-                showSuccessToast("ANKET BAÞARIYLA EKLENDÝ !\n\n" + scvalues.Name);
+                showSuccessToast("ANKET BAÅžARIYLA EKLENDÄ° !\n\n" + scvalues.Name);
 
                 // Determine status text and class
-                let statusText = Status ? "AKTÝF" : "PASÝF";
+                let statusText = Status ? "AKTÄ°F" : "PASÄ°F";
                 let statusClass = Status ? "text-danger" : "text-success";
 
                 // Append new survey to the table
@@ -581,15 +581,15 @@
                         <a href="/Admin/QuestionAjax/?Survey_Id=${Survey_Id}" class="btn btn-primary"
                            data-bs-toggle="tooltip"
                            data-bs-placement="top"
-                           title="Anketin Sorularýný Düzenlemek Ýçin Týkla">
-                           <b>SORULARA GÝT</b>
+                           title="Anketin SorularÄ±nÄ± DÃ¼zenlemek Ä°Ã§in TÄ±kla">
+                           <b>SORULARA GÄ°T</b>
                         </a>
                     </td>
                     <td class="centered">
-                        <a class="btn btn-warning update-survey" data-survey-id=${Survey_Id} data-bs-toggle="modal" data-bs-target="#updateSurvey" role="button"><b>DÜZENLE</b></a>
+                        <a class="btn btn-warning update-survey" data-survey-id=${Survey_Id} data-bs-toggle="modal" data-bs-target="#updateSurvey" role="button"><b>DÃœZENLE</b></a>
                     </td>
                     <td class="centered">
-                        <a class="btn btn-danger delete-survey" data-survey-id=${Survey_Id} role="button"><b>SÝL</b></a>
+                        <a class="btn btn-danger delete-survey" data-survey-id=${Survey_Id} role="button"><b>SÄ°L</b></a>
                     </td>
                 </tr>`;
 
@@ -618,18 +618,18 @@
 						<thead class="thead-dark">
 							<tr class="centered">
 								<th>ID</th>
-								<th>ÝSÝM</th>
-								<th>AÇIKLAMA</th>
-								<th>STATÜ</th>
+								<th>Ä°SÄ°M</th>
+								<th>AÃ‡IKLAMA</th>
+								<th>STATÃœ</th>
 								<th colspan="4">
-									<a data-bs-toggle="modal" data-bs-target="#createSurvey" class="btn btn-success update-survey" role="button"><b>YENÝ OLUÞTUR</b></a>
+									<a data-bs-toggle="modal" data-bs-target="#createSurvey" class="btn btn-success update-survey" role="button"><b>YENÄ° OLUÅžTUR</b></a>
 								</th>
 							</tr>
 						</thead>
 						<tbody>`;
                 $.each(data, function (index, value) {
-                    let statusText = value.status ? "AKTÝF" : "PASÝF";
-                    let statusClass = value.status ? "text-success" : "text-danger"; // Duruma göre renk sýnýfý
+                    let statusText = value.status ? "AKTÄ°F" : "PASÄ°F";
+                    let statusClass = value.status ? "text-success" : "text-danger"; // Duruma gÃ¶re renk sÄ±nÄ±fÄ±
 
                     tablehtml += `
 						<tr>
@@ -641,15 +641,15 @@
 								<a href="/Admin/QuestionAjax/?Survey_Id=${value.survey_Id}" class="btn btn-primary"
 								   data-bs-toggle="tooltip"
 								   data-bs-placement="top"
-								   title="Anketin Sorularýný Düzenlemek Ýçin Týkla">
-								   <b>SORULARA GÝT</b>
+								   title="Anketin SorularÄ±nÄ± DÃ¼zenlemek Ä°Ã§in TÄ±kla">
+								   <b>SORULARA GÄ°T</b>
 								</a>
 							</td>
 							<td class="centered">
-								<a class="btn btn-warning update-survey" data-survey-id=${value.survey_Id} data-bs-toggle="modal" data-bs-target="#updateSurvey" role="button"><b>DÜZENLE</b></a>
+								<a class="btn btn-warning update-survey" data-survey-id=${value.survey_Id} data-bs-toggle="modal" data-bs-target="#updateSurvey" role="button"><b>DÃœZENLE</b></a>
 							</td>
 							<td class="centered">
-								<a class="btn btn-danger delete-survey" data-survey-id=${value.survey_Id} role="button"><b>SÝL</b></a>
+								<a class="btn btn-danger delete-survey" data-survey-id=${value.survey_Id} role="button"><b>SÄ°L</b></a>
 							</td>
 						</tr>`;
                 });
@@ -699,10 +699,10 @@
                     url: "/Admin/SurveyAjax/UpdateSurvey/",
                     data: valuesforu,
                     success: function () {
-                        showSuccessToast("Anket Baþarýyla Güncellendi");
+                        showSuccessToast("Anket BaÅŸarÄ±yla GÃ¼ncellendi");
 
                         // Update the table row with the new values
-                        let statusText = valuesforu.Status ? "AKTÝF" : "PASÝF";
+                        let statusText = valuesforu.Status ? "AKTÄ°F" : "PASÄ°F";
                         let statusClass = valuesforu.Status ? "text-danger" : "text-success";
 
                         row.find('td:eq(1)').text(valuesforu.Name); // Update Name
@@ -730,14 +730,14 @@
                 contentType: "application/json",
                 dataType: "json",
                 success: function (response) {
-                    showSuccessToast("Anket Baþarýyla Silindi");
+                    showSuccessToast("Anket BaÅŸarÄ±yla Silindi");
 
                     // Remove the row from the table
                     row.remove();
                 },
                 error: function (xhr, status, error) {
                     console.log(error);
-                    showErrorToast("Anket silinirken bir hata oluþtu.");
+                    showErrorToast("Anket silinirken bir hata oluÅŸtu.");
                 }
             });
         });
