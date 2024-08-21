@@ -1,0 +1,70 @@
+﻿    <!-- JAVASCRIPT FILES -->
+<script src="~/sablon/js/jquery.min.js"></script>
+<script src="~/sablon/js/bootstrap.bundle.min.js"></script>
+<script src="~/sablon/js/Headroom.js"></script>
+<script src="~/sablon/js/jQuery.headroom.js"></script>
+<script src="~/sablon/js/slick.min.js"></script>
+<script src="~/sablon/js/custom.js"></script>
+
+<script src="~/sablon/js/ajax.js"></script>
+<script>
+	$(document).mousemove(function (event) {
+		$('.torch').css({
+			'top': event.pageY,
+			'left': event.pageX
+		});
+	});
+</script>
+
+
+<script>
+	function uploadFile() {
+		var formData = new FormData();
+		var fileName = document.getElementById("FileName").value;
+		var fileInput = document.getElementById("File");
+		var responseMessage = document.getElementById("responseMessage");
+
+		if (!fileName) {
+			document.getElementById("FileNameValidation").innerText = "Dosya adı gerekli.";
+			return;
+		} else {
+			document.getElementById("FileNameValidation").innerText = "";
+		}
+
+		if (fileInput.files.length === 0) {
+			document.getElementById("FileValidation").innerText = "Lütfen bir dosya seçin.";
+			return;
+		} else {
+			document.getElementById("FileValidation").innerText = "";
+		}
+
+		formData.append("FileName", fileName);
+		formData.append("File", fileInput.files[0]);
+
+		$.ajax({
+			url: '/Survey/Upload',
+			type: 'POST',
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function (response) {
+				responseMessage.innerHTML = '<div class="alert alert-success">' + response.message + '</div>';
+			},
+			error: function (xhr, status, error) {
+				responseMessage.innerHTML = '<div class="alert alert-danger">Dosya yükleme başarısız.</div>';
+			},
+			success: function (fun4) {
+				alert("Dosya Başarıyla Kaydedildi");
+			}
+		});
+	}
+</script>
+
+<script>
+	$(function () {
+		$("#datepicker").datepicker();
+	});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+5hb7x1l5eqEpRsF+kF7F5B5l5p5b7F5C5YbF7F5l5F7F7l5+5hb7x1l5eqEpRsF+F5p5b7F5l5p7F5b5l5F5F5b5+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRsF+5hb7x1l5eqEpRs
+

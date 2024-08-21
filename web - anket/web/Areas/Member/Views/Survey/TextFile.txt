@@ -1,0 +1,141 @@
+﻿@using Entity
+@model List<SurveyAnswer>
+@{
+	ViewData["Title"] = "Anketimiz";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@await Html.PartialAsync("~/Areas/Member/Views/Survey/Partials/_HeaderPartial.cshtml")
+<section class="contact section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-12">
+				<h2 class="mb-5">Haydi <span>başlayalım </span></h2>
+
+				<form class="contact-form	 me-lg-5 pe-lg-3 mb-3" asp-action="SurveyGet" asp-controller="Survey" method="post">
+					@foreach (var x in ViewBag.SurveyQuestions)
+					{
+						@if (x.Status == true)
+						{
+							@switch (x.Style)
+							{
+								//Kısa Cevap
+								case 0:
+									<div class="form-floating mb-4">
+										<input type="text" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].Answer" id="answer0" class="form-control mb-3" placeholder="@x.Description">
+										<label for="answer0">@x.Description</label>
+										<input type="hidden" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+									</div>
+									break;
+								//Paragraf
+								case 1:
+									<div class="form-floating mb-4">
+										<textarea id="answer1" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].Answer" class="form-control" placeholder="@x.Description" style="height: 160px"></textarea>
+										<label for="answer1">@x.Description</label>
+										<input type="hidden" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+									</div>
+									break;
+								//Çoktan Seçmeli
+								case 2:
+									<h4 class="product-title text-primary mb-4 mt-4">@x.Description</h4>
+									@foreach (var y in ViewBag.SurveyOptions)
+									{
+										@if (y.SurveyQuestion_Id == x.SurveyQuestion_Id && y.Status == true)
+										{
+											<div class="mb-4">
+												<input type="radio" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].Answer" value="@y.Option" />
+												<label>@y.Option</label>
+												<input type="hidden" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+											</div>
+										}
+									}
+									break;
+								//Dosya Yükleme
+								case 3:
+									<h4 class="product-title text-primary mb-4 mt-4">@x.Description</h4>
+									<div class="contact-form me-lg-5 pe-lg-3">
+										<div id="responseMessage"></div>
+										<div class="form-floating">
+											<input type="text" id="FileName" class="form-control" placeholder="Full name" required>
+											<label for="FileName">Dosya Adı Giriniz</label>
+											<span id="FileNameValidation" class="text-danger"></span>
+										</div>
+										<div class="my-4">
+											<input type="file" id="File" class="form-control" placeholder="Full name" required>
+											<span id="FileValidation" class="text-danger"></span>
+											<button type="button" class="form-control mt-2" style="border-radius:100px;font-weight:bold;color:white;background-color:#FF4400" onclick="uploadFile()">DOSYAYI KAYDET</button>
+										</div>
+									</div>
+									break;
+								//Onay Kutusu
+								case 4:
+									<h4 class="product-title text-primary mb-4 mt-4">@x.Description</h4>
+									@for (var y = 0; y < (((List<entity.Concrate.SurveyOption>)ViewBag.SurveyOptions).Where(x => x.SurveyQuestion_Id == x.SurveyQuestion_Id).ToList()).Count; y++)
+									{
+										var item = (((List<entity.Concrate.SurveyOption>)ViewBag.SurveyOptions)).ElementAt(y);
+										if (item.SurveyQuestion_Id == x.SurveyQuestion_Id && item.Status == true)
+										{
+											<div class="mb-4">
+												<input type="checkbox" name="surveyAnswers[@(ViewBag.SurveyQuestions.IndexOf(x) + y - 5)].Answer" value="@item.Option" />
+												<label>@item.Option</label>
+												<input type="hidden" name="surveyAnswers[@(ViewBag.SurveyQuestions.IndexOf(x) + y - 5)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+											</div>
+										}
+									}
+									break;
+								//Açılır Menü
+								case 5:
+									<h4 class="product-title text-primary mb-4 mt-4">@x.Description</h4>
+									<select name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].Answer" class="form-control mb-4">
+										<option value="" disabled selected>Bir seçenek seçin</option>
+										@foreach (var y in ViewBag.SurveyOptions)
+										{
+											if (y.SurveyQuestion_Id == x.SurveyQuestion_Id && y.Status == true)
+											{
+												<option value="@y.Option">@y.Option</option>
+											}
+										}
+									</select>
+									<input type="hidden" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+
+									break;
+								//Tarih
+								case 6:
+									<h4 class="product-title text-primary mb-4 mt-4">@x.Description</h4>
+									<div class="form-floating mb-4">
+										<input type="date" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].Answer" id="answer0">
+										<label for="answer0"></label>
+										<input type="hidden" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+									</div>
+									break;
+								//Saat
+								case 7:
+									<h4 class="product-title text-primary mb-4 mt-4">@x.Description</h4>
+									<div class="form-floating mb-4">
+										<input type="time" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].Answer" id="answer0">
+										<label for="answer0"></label>
+										<input type="hidden" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+									</div>
+									break;
+								//Tarih ve Saat
+								case 8:
+									<h4 class="product-title text-primary mb-4 mt-4">@x.Description</h4>
+									<div class="form-floating mb-4">
+										<input type="datetime-local" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].Answer" id="answer0">
+										<label for="answer0"></label>
+										<input type="hidden" name="surveyAnswers[@ViewBag.SurveyQuestions.IndexOf(x)].SurveyQuestion_Id" value="@x.SurveyQuestion_Id">
+									</div>
+									break;
+								//Default
+								default:
+									break;
+							}
+						}
+					}
+					<div class="col-lg-5 col-6 mt-4">
+						<button type="submit" class="form-control">GÖNDER</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

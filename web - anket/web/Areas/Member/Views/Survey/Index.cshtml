@@ -1,0 +1,38 @@
+﻿@using entity.Concrate
+@model List<Survey>
+@{
+	ViewData["Title"] = "Katılabileceğiniz Anketler";
+	Layout = "~/Areas/Member/Views/Shared/_Layout.cshtml";
+}
+<section class="front-product section-padding">
+	<div class="container-fluid p-0">
+		<div class="row align-items-center">
+			<div class="col-lg-6 col-12">
+				<img src="~/sablon/images/retail-shop-owner-mask-social-distancing-shopping.jpg" class="img-fluid" alt="">
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="px-5 py-5 py-lg-0">
+
+					<h2 class="mb-4"><span>Değerli</span> ziyaretçimiz</h2>
+
+					<p class="lead mb-4">Sizlerin görüşleri bizim için çok önemlidir. Bu nedenle, sizlere daha iyi hizmet sunabilmek ve ihtiyaçlarınızı daha iyi anlayabilmek amacıyla bir anket düzenliyoruz. Ankete katılarak bize vereceğiniz geri bildirimler, web sitemizin geliştirilmesine ve içeriğinizi sizlere daha uygun hale getirilmesine yardımcı olacaktır.</p>
+					<h6 class=" text-primary">
+						Katılabileceğiniz Anketler
+						<i class="bi-arrow-down mt-1 ms-2"></i><br />
+
+					</h6>
+					@foreach (var item in Model)
+					{
+						<a href="/Member/Survey/SurveyGet/@item.Survey_Id" class="custom-link">
+							@item.Name
+							<i class="bi-arrow-right mt-1 ms-2"></i><br />
+						</a>
+					}
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+

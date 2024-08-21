@@ -1,0 +1,51 @@
+﻿@model LoginViewModel
+@{
+	ViewData["Title"] = "Giriş Yap";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="sign-in-form section-padding">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-8 mx-auto col-12">
+
+				<h1 class="hero-title text-center mb-5">Giriş Yap</h1>
+
+				<div class="row">
+					<div class="col-lg-8 col-11 mx-auto">
+						<form method="post">
+							@if (ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+							{
+								<div class="alert alert-danger">
+									@ViewData.ModelState[""].Errors[0].ErrorMessage
+								</div>
+							}
+
+							<div class="form-floating mb-4 p-0">
+								<input type="text" asp-for="UserName" class="form-control" placeholder="T.C. Kimlik Numaranız" required="" oninput="tc(this)">
+
+								<label for="email">T.C. Kimlik Numaranız</label>
+							</div>
+
+							<div class="form-floating p-0">
+								<input type="password" asp-for="Password" class="form-control" placeholder="Parolanız" required="">
+
+								<label for="password">Parolanız</label>
+							</div>
+
+							<button type="submit" class="btn custom-btn form-control mt-4 mb-3">
+								GİRİŞ YAP
+							</button>
+
+							<p class="text-center">Hesabınız yok mu? <a href="~/Register/Index">Hesap oluşturun.</a></p>
+
+						</form>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</section>

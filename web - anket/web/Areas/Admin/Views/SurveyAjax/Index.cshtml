@@ -1,0 +1,75 @@
+﻿@using entity.Concrate
+@model List<Survey>
+@{
+	ViewData["Title1"] = "Anket";
+	ViewData["Title2"] = "İşlemleri";
+	ViewData["IMG"] = "3.jpg";
+	ViewData["Title"] = $"{ViewData["Title1"]} {ViewData["Title2"]}";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="mb-5 mt-5" style="margin-left:100px; margin-right:100px">
+	<h2 class="text-primary">Anket İşlemleri</h2>
+	@* 	Read*@
+	<div class="mb-2 mt-2">
+		<div class="mt-2" id="rsurvey">
+		</div>
+	</div>
+
+	<!-- Create -->
+	<div class="modal fade" id="createSurvey" tabindex="-1" aria-labelledby="createSurveyLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="mb-3 card-title centered">Anket Oluştur</h5>
+							<input type="text" id="txtscname" placeholder="İsim giriniz" class="form-control mb-1" />
+							<input type="text" id="txtscdescription" placeholder="Açıklama giriniz" class="form-control mb-1" />
+							<div class="form-group">
+								<select id="txtscstatus" class="form-control" onchange="setStatus(this.value)">
+									<option value="" disabled selected>Statü seçiniz</option>
+									<option value="" disabled></option>
+									<option value="true">Aktif</option>
+									<option value="false">Pasif</option>
+								</select>
+							</div>
+							<input type="hidden" id="txtscstatus" placeholder="Statü seçiniz" class="form-control" />
+						</div>
+						<button type="button" id="btnsc" class="btn btn-success m-3"><b>OLUŞTUR</b></button>
+						<button type="button" class="btn btn-danger m-3 mt-0" data-bs-dismiss="modal"><b>VAZGEÇ</b></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Update -->
+	<div class="modal fade" id="updateSurvey" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-body">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="centered card-title">Anket Düzenle</h5>
+									<input type="text" id="txtsuname" class="form-control mb-1" />
+									<input type="text" id="txtsudescription" class="form-control mb-1" />
+									<div class="form-group">
+										<select id="txtsustatus" class="form-control" onchange="setStatus(this.value)">
+											<option value="" disabled selected>Statü seçiniz</option>
+											<option value="" disabled></option>
+											<option value="true">Aktif</option>
+											<option value="false">Pasif</option>
+										</select>
+									</div>
+								</div>
+								<button type="button" id="btnsu" class="btn btn-warning m-3"><b>GÜNCELLE</b></button>
+								<button type="button" class="btn btn-danger m-3 mt-0" data-bs-dismiss="modal"><b>VAZGEÇ</b></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

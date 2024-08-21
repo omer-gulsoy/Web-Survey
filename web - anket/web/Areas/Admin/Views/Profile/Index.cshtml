@@ -1,0 +1,72 @@
+﻿@model AppUserEditDto
+@{
+	ViewData["Title1"] = "Profil";
+	ViewData["Title2"] = "İşlemleri";
+	ViewData["IMG"] = "1.jpg";
+	ViewData["Title"] = $"{ViewData["Title1"]} {ViewData["Title2"]}";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="contact section-padding">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-12">
+				<h2 class="mb-4">Profil <span>bilgileriniz</span></h2>
+				<form>
+					<div class="row">
+						<input asp-for="Id" required="" class="form-control text-muted" type="hidden" />
+						<div class="col-6 border-end contact-info">
+							<h6 class="mb-3">İsminiz</h6>
+							<input asp-for="Name" required="" class="form-control text-muted" type="text" oninput(isim(this)) />
+						</div>
+
+						<div class="col-6 contact-info">
+							<h6 class="mb-3">Soyisminiz</h6>
+
+							<input asp-for="Surname" required="" class="form-control text-muted" type="text" />
+						</div>
+
+						<div class="col-6 border-top border-end contact-info">
+							<h6 class="mb-3">T.C. Kimlik Numaranız</h6>
+
+							<input asp-for="UserName" required="" class="form-control text-muted" type="text" />
+						</div>
+
+						<div class="col-6 border-top border-end contact-info">
+							<h6 class="mb-3">Telefon Numaranız</h6>
+
+							<input asp-for="Phone" required="" class="form-control text-muted" type="text" />
+						</div>
+
+						<div class="col-6 border-top border-end contact-info">
+							<h6 class="mb-3">E-Posta Adresiniz</h6>
+
+							<input asp-for="Email" required="" class="form-control text-muted" type="text" />
+						</div>
+
+						<div class="col-6 border-top border-end contact-info">
+							<h6 class="mb-3">Parolanız</h6>
+
+							<input asp-for="Password" required="" class="form-control text-muted" type="password" />
+						</div>
+
+						<div class="col-6 border-top border-end contact-info">
+							<h6 class="mb-3">Parola Doğrulama</h6>
+
+							<input asp-for="ConfirmPassword" required="" class="form-control text-muted" type="password" />
+						</div>
+
+
+						<div class="col-6 border-top contact-info">
+							<button type="submit" id="send" class="btn custom-btn form-control mt-4 mb-3">
+								<b>BİLGİLERİ GÜNCELLE</b>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+
+
+		</div>
+	</div>
+</section>

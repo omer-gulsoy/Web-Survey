@@ -1,0 +1,134 @@
+﻿@using Entity
+@model List<SurveyQuestion>
+@{
+	ViewData["Title1"] = "Soru";
+	ViewData["Title2"] = "İşlemleri";
+	ViewData["IMG"] = "4.jpg";
+	ViewData["Title"] = $"{ViewData["Title1"]} {ViewData["Title2"]}";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mb-5 mt-5" style="margin-left:100px; margin-right:100px">
+	<h2 class="text-primary">Soru İşlemleri</h2>
+
+
+	<!-- Read -->
+	<div class="mb-2 mt-2">
+		<div class="mt-2" id="rquestion">
+		</div>
+	</div>
+
+	<!-- Create -->
+	<div class="modal fade" id="createQuestion" tabindex="-1" aria-labelledby="createQuestionLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Soru Oluştur</h5>
+							<div class="form-group mb-1">
+								<select id="txtqcsurveyid" class="form-control" onchange="setSurveyId(this.value)">
+									<option value="" disabled selected>Anket Seçiniz</option>
+									<option value="" disabled></option>
+									@foreach (var surveys in ViewBag.Surveys)
+									{
+										<option value="@surveys.Survey_Id">@surveys.Name</option>
+									}
+								</select>
+							</div>
+							<input type="text" id="txtqcdescription" placeholder="Açıklama Giriniz" class="form-control mb-1" />
+							<div class="form-group mb-1">
+								<select id="txtqcstyle" class="form-control" onchange="setStyle(this.value)">
+									<option value="" disabled selected>Stil Seçiniz</option>
+									<option value="" disabled></option>
+									<option value=0>Kısa Yanıt</option>
+									<option value=1>Paragraf</option>
+									<option value="" disabled></option>
+									<option value=2>Çoktan Seçmeli</option>
+									<option value=4>Onay Kutusu</option>
+									<option value=5>Açılır Menü</option>
+									<option value="" disabled></option>
+									<option value=3>Dosya Yükleme</option>
+									<option value="" disabled></option>
+									<option value=8>Tarih ve Saat</option>
+									<option value=6>Tarih</option>
+									<option value=7>Saat</option>
+								</select>
+							</div>
+							<input type="number" id="txtqcqueue" placeholder="Sıra Numarası Giriniz" class="form-control mb-1" min="1" />
+							<div class="form-group">
+								<select id="txtqcstatus" class="form-control" onchange="setStatus(this.value)">
+									<option value="" disabled selected>Statü Seçiniz</option>
+									<option value="" disabled></option>
+									<option value="true">Aktif</option>
+									<option value="false">Pasif</option>
+								</select>
+							</div>
+						</div>
+						<button type="button" id="btnqc" class="btn btn-success m-3"><b>OLUŞTUR</b></button>
+						<button type="button" class="btn btn-danger m-3 mt-0" data-bs-dismiss="modal"><b>VAZGEÇ</b></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Update -->
+	<div class="modal fade" id="updateQuestion" tabindex="-1" aria-labelledby="updateQuestionLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-body">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">Soru Güncelle</h5>
+									<div class="form-group mb-1">
+										<select id="txtqusurveyid" class="form-control" onchange="setSurveyId(this.value)">
+											<option value="" disabled>Anket Seçiniz</option>
+											<option value="" disabled></option>
+											@foreach (var surveys in ViewBag.Surveys)
+											{
+												<option value="@surveys.Survey_Id">@surveys.Name</option>
+											}
+										</select>
+									</div>
+									<input type="text" id="txtqudescription" placeholder="Açıklama Giriniz" class="form-control mb-1" />
+									<div class="form-group mb-1">
+										<select id="txtqustyle" class="form-control" onchange="setStyle(this.value)">
+											<option value="" disabled selected>Stil Seçiniz</option>
+											<option value="" disabled></option>
+											<option value=0>Kısa Yanıt</option>
+											<option value=1>Paragraf</option>
+											<option value="" disabled></option>
+											<option value=2>Çoktan Seçmeli</option>
+											<option value=4>Onay Kutusu</option>
+											<option value=5>Açılır Menü</option>
+											<option value="" disabled></option>
+											<option value=3>Dosya Yükleme</option>
+											<option value="" disabled></option>
+											<option value=8>Tarih ve Saat</option>
+											<option value=6>Tarih</option>
+											<option value=7>Saat</option>
+										</select>
+									</div>
+									<input type="number" id="txtququeue" class="form-control mb-1" min="1" />
+									<div class="form-group">
+										<select id="txtqustatus" class="form-control" onchange="setStatus(this.value)">
+											<option value="" disabled selected>Statü Seçiniz</option>
+											<option value="" disabled></option>
+											<option value="true">Aktif</option>
+											<option value="false">Pasif</option>
+										</select>
+									</div>
+								</div>
+								<button type="button" id="btnqu" class="btn btn-warning m-3"><b>GÜNCELLE</b></button>
+								<button type="button" class="btn btn-danger m-3 mt-0" data-bs-dismiss="modal"><b>VAZGEÇ</b></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

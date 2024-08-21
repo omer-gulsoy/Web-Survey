@@ -1,0 +1,110 @@
+﻿@using entity.Concrate
+@model List<SurveyOption>
+@{
+	ViewData["Title1"] = "Seçenek";
+	ViewData["Title2"] = "İşlemleri";
+	ViewData["IMG"] = "5.jpg";
+	ViewData["Title"] = $"{ViewData["Title1"]} {ViewData["Title2"]}";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mb-5 mt-5" style="margin-left:100px; margin-right:100px">
+	<h2 class="text-primary">Tüm seçenekler</h2>
+
+
+	<!-- Read -->
+	<div class="mb-2 mt-2">
+		<div class="mt-2" id="roption">
+		</div>
+	</div>
+	<!-- Create -->
+	<div class="modal fade" id="createOption" tabindex="-1" aria-labelledby="createOptionLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+
+
+					<div class="card">
+						<div class="card-body">
+							<h5 class="centred card-title">Seçenek Ekle</h5>
+							<div class="form-group mb-1">
+								<select id="txtocquestionid" class="form-control" onchange="setQuestionId(this.value)">
+									<option value="" disabled selected>Soru seçiniz</option>
+									@foreach (var surveys in ViewBag.Surveys)
+									{
+										<option value="" disabled></option>
+										<option value="" disabled>@surveys.Name</option>
+										@foreach (var question in ViewBag.Questions)
+										{
+											@if (question.Survey_Id == surveys.Survey_Id)
+											{
+												<option value="@question.SurveyQuestion_Id">@question.Description</option>
+											}
+										}
+
+									}
+								</select>
+							</div>
+							<input type="text" id="txtocoption" placeholder="Seçenek giriniz" class="form-control mb-1" />
+							<div class="form-group">
+								<select id="txtocstatus" class="form-control" onchange="setStatus(this.value)">
+									<option value="" disabled selected>Statü seçiniz</option>
+									<option value="" disabled></option>
+									<option value=true>Aktif</option>
+									<option value=false>Pasif</option>
+								</select>
+							</div>
+						</div>
+						<button type="button" id="btnoc" class="btn btn-success m-3"><b>OLUŞTUR</b></button>
+						<button type="button" class="btn btn-danger m-3 mt-0" data-bs-dismiss="modal"><b>VAZGEÇ</b></button>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Update -->
+	<div class="modal fade" id="updateOption" tabindex="-1" aria-labelledby="updateOptionLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title centered">Seçenek Güncelle</h5>
+							<div class="form-group mb-1">
+								<select id="txtouquestionid" class="form-control" onchange="setQuestionId(this.value)">
+									<option value="" disabled selected>Soru seçiniz</option>
+									@foreach (var surveys in ViewBag.Surveys)
+									{
+										<option value="" disabled></option>
+										<option value="" disabled>@surveys.Name</option>
+										@foreach (var question in ViewBag.Questions)
+										{
+											@if (question.Survey_Id == surveys.Survey_Id)
+											{
+												<option value="@question.SurveyQuestion_Id">@question.Description</option>
+											}
+										}
+
+									}
+								</select>
+							</div>
+							<input type="text" id="txtouoption" placeholder="Seçenek giriniz" class="form-control mb-1" />
+							<div class="form-group">
+								<select id="txtoustatus" class="form-control" onchange="setStatus(this.value)">
+									<option value="" disabled selected>Statü seçiniz</option>
+									<option value="" disabled></option>
+									<option value=true>Aktif</option>
+									<option value=false>Pasif</option>
+								</select>
+							</div>
+						</div>
+						<button type="button" id="btnou" class="btn btn-warning m-3"><b>GÜNCELLE</b></button>
+						<button type="button" class="btn btn-danger m-3 mt-0" data-bs-dismiss="modal"><b>VAZGEÇ</b></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

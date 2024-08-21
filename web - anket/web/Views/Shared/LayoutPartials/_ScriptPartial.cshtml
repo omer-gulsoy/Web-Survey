@@ -1,0 +1,79 @@
+﻿<script src="~/sablon/js/jquery.min.js"></script>
+<script src="~/sablon/js/bootstrap.bundle.min.js"></script>
+<script src="~/sablon/js/Headroom.js"></script>
+<script src="~/sablon/js/jQuery.headroom.js"></script>
+<script src="~/sablon/js/slick.min.js"></script>
+<script src="~/sablon/js/custom.js"></script>
+<script>
+	function tc(input) {
+		input.value = input.value.replace(/\D/g, '');
+		if (input.value.length > 11) {
+			input.value = input.value.slice(0, 11);
+		}
+	}
+	function telefon(input) {
+		input.setAttribute("placeholder", "5XXXXXXXXX");
+		input.value = input.value.replace(/\D/g, '');
+		if (input.value.length > 10) {
+			input.value = input.value.slice(0, 10);
+		}
+	}
+	function isim(input) {
+		input.value = input.value.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, '').toUpperCase();
+	}
+	function sayi(input) {
+		input.value = input.value.replace(/\D/g, '');
+	}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+	$(document).mousemove(function (event) {
+		$('.torch').css({
+			'top': event.pageY,
+			'left': event.pageX
+		});
+	});
+</script>
+
+<script>
+	function uploadFile() {
+		var formData = new FormData();
+		var fileName = document.getElementById("FileName").value;
+		var fileInput = document.getElementById("File");
+		var responseMessage = document.getElementById("responseMessage");
+
+		if (!fileName) {
+			document.getElementById("FileNameValidation").innerText = "Dosya adı gerekli.";
+			return;
+		} else {
+			document.getElementById("FileNameValidation").innerText = "";
+		}
+
+		if (fileInput.files.length === 0) {
+			document.getElementById("FileValidation").innerText = "Lütfen bir dosya seçin.";
+			return;
+		} else {
+			document.getElementById("FileValidation").innerText = "";
+		}
+
+		formData.append("FileName", fileName);
+		formData.append("File", fileInput.files[0]);
+
+		$.ajax({
+			url: '/DenemeAjax/Upload',
+			type: 'POST',
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function (response) {
+				responseMessage.innerHTML = '<div class="alert alert-success">' + response.message + '</div>';
+			},
+			error: function (xhr, status, error) {
+				responseMessage.innerHTML = '<div class="alert alert-danger">Dosya yükleme başarısız.</div>';
+			},
+			success: function (fun4) {
+				alert("Dosya Başarıyla Kaydedildi");
+			}
+		});
+	}
+</script>

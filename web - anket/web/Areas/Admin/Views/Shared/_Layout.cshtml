@@ -1,0 +1,19 @@
+﻿<!doctype html>
+<html lang="en">
+@await Html.PartialAsync("~/Areas/Admin/Views/Shared/LayoutPartials/_HeadPartial.cshtml")
+
+<body>
+    <section class="preloader">
+        <div class="spinner">
+            <span class="sk-inner-circle"></span>
+        </div>
+    </section>
+    <main>
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/LayoutPartials/_NavbarPartial.cshtml")
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shared/LayoutPartials/_HeaderPartial.cshtml")
+        @RenderBody()
+    </main>
+    @await Html.PartialAsync("~/Areas/Admin/Views/Shared/LayoutPartials/_FooterPartial.cshtml")
+    @await Html.PartialAsync("~/Areas/Admin/Views/Shared/LayoutPartials/_ScriptPartial.cshtml")
+</body>
+</html>

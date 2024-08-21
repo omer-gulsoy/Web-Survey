@@ -1,0 +1,134 @@
+﻿@using Entity
+@model List<SurveyAnswer>
+@{
+	ViewData["Title1"] = "Cevaplar";
+	ViewData["Title2"] = "ve İstatistikler";
+	ViewData["IMG"] = "2.jpg";
+	ViewData["Title"] = $"{ViewData["Title1"]} {ViewData["Title2"]}";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@*
+0 + -> Kısa Yanıt
+1 + -> Paragraf
+2 + -> Çoktan Seçmeli
+3 + -> Dosya Yükle
+4 + -> Onay Kutusu
+5 + -> Açılır Menü
+6 -> Tarih
+7 -> Saat
+8 -> Tarih ve Saat *@
+<section class="faq section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-12">
+				<h2 class="mt-5">Anket <span>soruları</span></h2>
+				@foreach (var anket in ViewBag.Surveys)
+				{
+					<div class="accordion" id="accordionProductt_@anket.Survey_Id">
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingg_@anket.Survey_Id">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionProductOnee_@anket.Survey_Id" aria-expanded="false" style="color:#FF4400" aria-controls="accordionProductOnee_@anket.Survey_Id">
+									<b>@anket.Name</b>
+								</button>
+							</h2>
+							<div id="accordionProductOnee_@anket.Survey_Id" class="accordion-collapse collapse" aria-labelledby="headingg_@anket.Survey_Id" data-bs-parent="#accordionProductt_@anket.Survey_Id">
+								<div class="accordion-body">
+									<p class="large-paragraph">
+										@foreach (var x in ViewBag.SurveyQuestions)
+										{
+											@if (x.Survey_Id == anket.Survey_Id)
+											{
+												@if (x.Style == 0 || x.Style == 1 & x.Survey_Id == anket.Survey_Id)
+												{
+													<div class="accordion" id="accordionProduct_@x.SurveyQuestion_Id">
+														<div class="accordion-item">
+															<h2 class="accordion-header" id="heading_@x.SurveyQuestion_Id">
+																<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionProductOne_@x.SurveyQuestion_Id" aria-expanded="false" aria-controls="accordionProductOne_@x.SurveyQuestion_Id">
+																	@x.Description
+																</button>
+															</h2>
+															<div id="accordionProductOne_@x.SurveyQuestion_Id" class="accordion-collapse collapse" aria-labelledby="heading_@x.SurveyQuestion_Id" data-bs-parent="#accordionProduct_@x.SurveyQuestion_Id">
+																<div class="accordion-body">
+																	@foreach (var answer in Model)
+																	{
+																		@if (answer.SurveyQuestion_Id == x.SurveyQuestion_Id)
+																		{
+																			<p class="large-paragraph">
+																				@answer.Answer
+																			</p>
+																		}
+																	}
+																</div>
+															</div>
+														</div>
+													</div>
+												}
+												@if (x.Style == 2 || x.Style == 4 || x.Style == 5 & x.Survey_Id == anket.Survey_Id)
+												{
+													<div class="accordion" id="accordionProduct_@x.SurveyQuestion_Id">
+														<div class="accordion-item">
+															<h2 class="accordion-header" id="heading_@x.SurveyQuestion_Id">
+																<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionProductTwo_@x.SurveyQuestion_Id" aria-expanded="false" aria-controls="accordionProductTwo_@x.SurveyQuestion_Id">
+																	@x.Description
+																</button>
+															</h2>
+															<div id="accordionProductTwo_@x.SurveyQuestion_Id" class="accordion-collapse collapse" aria-labelledby="heading_@x.SurveyQuestion_Id" data-bs-parent="#accordionProduct_@x.SurveyQuestion_Id">
+																<div class="accordion-body">
+																	@foreach (var item in ViewBag.SurveyOptions)
+																	{
+																		@if (item.SurveyQuestion_Id == x.SurveyQuestion_Id)
+																		{
+																			int optionCount = Model.Count(SurveyAnswer => SurveyAnswer.Answer == item.Option);
+																			<p class="txt-primary">
+																				<span class="text-primary">@item.Option:</span> @optionCount
+																			</p>
+																		}
+																	}
+																</div>
+															</div>
+														</div>
+													</div>
+												}
+												@if (x.Style == 6 || x.Style == 7 || x.Style == 8 & x.Survey_Id == anket.Survey_Id)
+												{
+													<div class="accordion" id="accordionProduct_@x.SurveyQuestion_Id">
+														<div class="accordion-item">
+															<h2 class="accordion-header" id="heading_@x.SurveyQuestion_Id">
+																<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionProductOne_@x.SurveyQuestion_Id" aria-expanded="false" aria-controls="accordionProductOne_@x.SurveyQuestion_Id">
+																	@x.Description
+																</button>
+															</h2>
+															<div id="accordionProductOne_@x.SurveyQuestion_Id" class="accordion-collapse collapse" aria-labelledby="heading_@x.SurveyQuestion_Id" data-bs-parent="#accordionProduct_@x.SurveyQuestion_Id">
+																<div class="accordion-body">
+																	@foreach (var answer in Model)
+																	{
+																		@if (answer.SurveyQuestion_Id == x.SurveyQuestion_Id)
+																		{
+																			<p class="large-paragraph">
+																				@answer.Answer
+																			</p>
+																		}
+																	}
+																</div>
+															</div>
+														</div>
+													</div>
+												}
+											}
+										}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+		@* 	Read*@
+		<div class="mb-2 mt-2">
+			<button type="button" id="btnar" class="btn btn-primary m-3"><b>LİSTELE</b></button>
+			<div class="mt-2" id="ranswer">
+			</div>
+		</div>
+	</div>
+</section>

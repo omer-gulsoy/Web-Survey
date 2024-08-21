@@ -1,0 +1,46 @@
+﻿@model web.Models.SingleFileModel
+@{
+	ViewData["Title"] = "Deneme";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="contact section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-12">
+				<h2 class="mb-5">Dosya <span>yükleme </span></h2>
+				<form class="contact-form me-lg-5 pe-lg-3" asp-action="Upload" asp-controller="Deneme" asp-asp-controller="Upload" method="post" enctype="multipart/form-data">
+
+					@if (Model.isResponse)
+					{
+						@if (Model.isSuccess)
+						{
+							<div class="alert alert-success">
+								@Model.message
+							</div>
+						}
+						else
+						{
+							<div class="alert alert-success">
+								@Model.message
+							</div>
+						}
+					}
+					<div class="form-floating">
+						<input type="text" asp-for="FileName" class="form-control" placeholder="Full name" required>
+						<label>Dosya Adı Giriniz</label>
+						<span asp-validation-for="FileName" class="text-danger"></span>
+					</div>
+					<div class="my-4">
+						<input asp-for="File" class="form-control" placeholder="Full name" required />
+
+						<span asp-validation-for="File" class="text-danger"></span>
+					</div>
+					<div class="col-lg-5 col-6">
+						<button type="submit" class="form-control">GÖNDER</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

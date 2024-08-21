@@ -1,0 +1,98 @@
+﻿@{
+	ViewData["Title1"] = "Yönetici";
+	ViewData["Title2"] = "Paneli";
+	ViewData["IMG"] = "5.jpg";
+	ViewData["Title"] = $"{ViewData["Title1"]} {ViewData["Title2"]}";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="team section-padding">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-12">
+				<h2 class="mb-5">Yapabileceğiniz <span>işlemler</span></h2>
+			</div>
+
+			<div class="col-lg-4 mb-4 col-12">
+				<div class="team-thumb d-flex align-items-center">
+					<img src="~/sablon/images/my_import/survey.png" class="img-fluid custom-circle-image team-image me-4" alt="">
+					<div class="team-info">
+						<h5 class="mb-0">Anket</h5>
+						<strong class="text-muted">İşlemleri</strong>
+						<a href="~/Admin/SurveyAjax" class="btn custom-modal-btn">
+							<i class="bi-gear-fill"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 mb-4 col-12">
+				<div class="team-thumb d-flex align-items-center">
+					<img src="~/sablon/images/my_import/question.png" class="img-fluid custom-circle-image team-image me-4" alt="">
+					<div class="team-info">
+						<h5 class="mb-0">Soru</h5>
+						<strong class="text-muted">İşlemleri</strong>
+						<a href="~/Admin/QuestionAjax" class="btn custom-modal-btn">
+							<i class="bi-gear-fill"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 mb-4 col-12">
+				<div class="team-thumb d-flex align-items-center">
+					<img src="~/sablon/images/my_import/option.png" class="img-fluid custom-circle-image team-image me-4" alt="">
+					<div class="team-info">
+						<h5 class="mb-0">Seçenek</h5>
+						<strong class="text-muted">İşlemleri</strong>
+						<a href="~/Admin/OptionAjax" class="btn custom-modal-btn">
+							<i class="bi-gear-fill"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 mb-4 col-12">
+				<div class="team-thumb d-flex align-items-center">
+					<img src="~/sablon/images/my_import/statistic.png" class="img-fluid custom-circle-image team-image me-4" alt="">
+					<div class="team-info">
+						<h5 class="mb-0">Cevapları</h5>
+						<strong class="text-muted">Görüntüle</strong>
+						<a href="~/Admin/Statistic" class="btn custom-modal-btn">
+							<i class="bi-gear-fill"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 mb-4 col-12">
+				<div class="team-thumb d-flex align-items-center">
+					<img src="~/sablon/images/my_import/profile.png" class="img-fluid custom-circle-image team-image me-4" alt="">
+					<div class="team-info">
+						<h5 class="mb-0">Profil</h5>
+						<strong class="text-muted">İşlemleri</strong>
+						<a href="~/Admin/Profile" class="btn custom-modal-btn">
+							<i class="bi-gear-fill"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 mb-4 col-12">
+				<div class="team-thumb d-flex align-items-center">
+					<img src="~/sablon/images/my_import/preview.png" class="img-fluid custom-circle-image team-image me-4" alt="">
+					<div class="team-info">
+						<h5 class="mb-0">Anket</h5>
+						<strong class="text-muted">Önizleme</strong>
+						<a href="~/Member/Survey" class="btn custom-modal-btn">
+							<i class="bi-gear-fill"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>

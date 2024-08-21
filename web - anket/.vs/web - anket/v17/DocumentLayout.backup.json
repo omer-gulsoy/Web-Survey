@@ -1,0 +1,79 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\win11\\Documents\\Projeler\\web - anket\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2C2EAF3D-9257-4041-AE71-88F7ECE85C30}|web\\web.csproj|c:\\users\\win11\\documents\\projeler\\web - anket\\web\\views\\shared\\layoutpartials\\_scriptpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C2EAF3D-9257-4041-AE71-88F7ECE85C30}|web\\web.csproj|solutionrelative:web\\views\\shared\\layoutpartials\\_scriptpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C2EAF3D-9257-4041-AE71-88F7ECE85C30}|web\\web.csproj|c:\\users\\win11\\documents\\projeler\\web - anket\\web\\areas\\member\\views\\shared\\layoutpartials\\_scriptpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2C2EAF3D-9257-4041-AE71-88F7ECE85C30}|web\\web.csproj|solutionrelative:web\\areas\\member\\views\\shared\\layoutpartials\\_scriptpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C2EAF3D-9257-4041-AE71-88F7ECE85C30}|web\\web.csproj|c:\\users\\win11\\documents\\projeler\\web - anket\\web\\wwwroot\\sablon\\js\\ajax.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2C2EAF3D-9257-4041-AE71-88F7ECE85C30}|web\\web.csproj|solutionrelative:web\\wwwroot\\sablon\\js\\ajax.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 156,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_ScriptPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\win11\\Documents\\Projeler\\web - anket\\web\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "RelativeDocumentMoniker": "web\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "ToolTip": "C:\\Users\\win11\\Documents\\Projeler\\web - anket\\web\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "RelativeToolTip": "web\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "ViewState": "AgIAADQAAAAAAAAAAAAmwEgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-20T14:18:46.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_ScriptPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\win11\\Documents\\Projeler\\web - anket\\web\\Areas\\Member\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "RelativeDocumentMoniker": "web\\Areas\\Member\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "ToolTip": "C:\\Users\\win11\\Documents\\Projeler\\web - anket\\web\\Areas\\Member\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "RelativeToolTip": "web\\Areas\\Member\\Views\\Shared\\LayoutPartials\\_ScriptPartial.cshtml",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAADgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-20T14:17:55.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ajax.js",
+              "DocumentMoniker": "C:\\Users\\win11\\Documents\\Projeler\\web - anket\\web\\wwwroot\\sablon\\js\\ajax.js",
+              "RelativeDocumentMoniker": "web\\wwwroot\\sablon\\js\\ajax.js",
+              "ToolTip": "C:\\Users\\win11\\Documents\\Projeler\\web - anket\\web\\wwwroot\\sablon\\js\\ajax.js",
+              "RelativeToolTip": "web\\wwwroot\\sablon\\js\\ajax.js",
+              "ViewState": "AgIAACIBAAAAAAAAAAAswDYCAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-08-20T14:11:31.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
